@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#include <stdio.h>
-
 // Função recursiva para movimentação da Torre (para a direita)
 void recursivo1(int i) {
     if (i > 0) {
