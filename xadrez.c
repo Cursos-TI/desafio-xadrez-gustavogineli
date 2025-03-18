@@ -1,60 +1,69 @@
 #include <stdio.h>
 
-int main() {
+#include <stdio.h>
 
-    printf("Movimetação da Torre (5 casas para a direita): \n");
-    //Usamos o for para mover 5 casas para a direita
-    int i;
-
-    for (i = 0; i < 5; i++)
-    {
-        printf("Movendo torre para a direita \n");
+// Função recursiva para movimentação da Torre (para a direita)
+void recursivo1(int i) {
+    if (i > 0) {
+        printf("Direita\n");
+        recursivo1(i - 1);  
     }
+}
 
-    printf("\n Movimento do Bispo (5 casas na diagonal cima, direita):\n");
-    //Usamos o while para mover 5 casas na diagonal Cima e a Direita
-    int j = 0;
-    while (j < 5) 
-    {
-        printf(" Movendo o Bispo para Cima direita\n");
-        j++;
+// Função recursiva para movimentação do Bispo (diagonal para cima e direita) com loops aninhados
+void recursivo2(int j) {
+    for (int i = 0; i < j; i++) {  // Loop externo controla o movimento vertical (para cima)
+        printf("Cima\n");
+        for (int k = 0; k < 1; k++) {  // Loop interno controla o movimento horizontal (para a direita)
+            printf("Direita\n");
+        }
     }
+}
 
-    printf("\nMovimentação da Rainha (8 casas para a esquerda): \n");
-    //Usamos o do-while para movimentar 8 casas a esquerda
-    int k = 0;
+// Função recursiva para movimentação da Rainha (para a esquerda)
+void recursivo3(int l) {
+    if (l > 0) {
+        printf("Esquerda\n");
+        recursivo3(l - 1);  
+    }
+}
+
+// Função para movimentar o Cavalo (movimento em 'L' - 2 casas para cima e 1 para a direita) com controle de fluxo
+void movimentoCavalo() {
+    int i, j;
     
-    do 
-    {
-       printf("Movimentação da Rainha para a esquerda\n");
-        k++;
-    } while (k < 8);
+    // O Cavalo se move para cima (2 casas) e depois para a direita (1 casa)
+    // Loop Externo: movimento para cima (2 casas)
+    for (i = 0; i < 2; i++) {
+        printf("Cima\n");  // O Cavalo se move para cima
+    }
+    
+    // Loop Interno: movimento para a direita (1 casa)
+    for (j = 0; j < 1; j++) {
+        printf("Direita\n");  // O Cavalo se move para a direita
+    }
+}
+
+int main() {
+    int torre = 1; // Número de casas a serem movidas pela Torre
+    int bispo = 1; // Número de casas a serem movidas pelo Bispo
+    int rainha = 2; // Número de casas a serem movidas pela Rainha
+
+    // Movimento da Torre (1 casas para a direita)
+    printf("Movimentação da Torre (1 casas para a direita): \n");
+    recursivo1(torre);
+
+    // Movimento do Bispo (1 casas na diagonal cima, direita)
+    printf("\nMovimento do Bispo (1 casas na diagonal cima, direita):\n");
+    recursivo2(bispo);
+
+    // Movimento da Rainha (2 casas para a esquerda)
+    printf("\nMovimentação da Rainha (2 casas para a esquerda): \n");
+    recursivo3(rainha);
+
+    // **Movimentação do Cavalo (movimento em 'L'):**
+    printf("\nMovimentação do Cavalo (movimento em 'L'): \n");
+    movimentoCavalo();  // Chama a função para mover o Cavalo
 
     return 0;
-
-
-
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
 }
